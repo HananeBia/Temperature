@@ -62,7 +62,4 @@ public class LightDaoCustomTest {
         assertThat(lightDao.findOnLights()).hasSize(1);
     }
 
-
-
-
 }
