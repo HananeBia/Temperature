@@ -1,6 +1,5 @@
-
-
 package fr.emse.majeureinfo.springbootintro.web;
+
 
 import java.io.IOException;
 import javax.servlet.Filter;
@@ -43,4 +42,3 @@ public class SimpleCORSFilter implements Filter {
 
     public void destroy() {}
 }
-

@@ -1,33 +1,30 @@
 package fr.emse.majeureinfo.springbootintro.web;
 
-import fr.emse.majeureinfo.springbootintro.model.Light;
-import fr.emse.majeureinfo.springbootintro.model.Noise;
 import fr.emse.majeureinfo.springbootintro.model.Room;
+import fr.emse.majeureinfo.springbootintro.model.Temperature;
 
 public class RoomDto {
     private final Long id;
-    private final fr.emse.majeureinfo.springbootintro.model.Light Light;
-    private final fr.emse.majeureinfo.springbootintro.model.Noise Noise;
+    private final String name;
+    private final TemperatureDto temperature;
+
 
     public RoomDto(Room room) {
         this.id = room.getId();
-        this.Light = room.getLevel();
-        this.Noise = room.getStatus();
+        this.name = room.getName();
+        this.temperature = room.getTemperature() == null ? null: new TemperatureDto(room.getTemperature());
+
     }
 
     public Long getId() {
         return id;
     }
 
-    public Light getLevel() {
-        return Light;
+    public String getName() {
+        return name;
     }
 
-    public Noise getStatus() {
-        return Noise;
+    public TemperatureDto getTemperature() {
+        return temperature;
     }
-
-
-
 }
-
