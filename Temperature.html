@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/justified-nav.css">
+</head>
+
+<body>
+<div id="app" class="container">
+<nav class="navbar navbar-expand-md navbar-light bg-light rounded mb-3">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav text-md-center nav-justified w-100">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Building <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="rooms.html">Room</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="SwitchLight.html">Switch Light</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="SwitchRinger.html">Switch Ringer</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="Temperature.html">Temperature</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+<br>
+<h2 class="text-center" style="color:#000080;">Temperature of Rooms</h2>
+<br>
+
+<table  style="margin-left: 2cm;" class="table">
+    <thead>
+    <tr>
+        <th scope="col">N°Room</th>
+        <th scope="col">Name </th>
+        <th scope="col">Temperature(in°C)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <form action="">
+    </form>
+    <tr v-for="room in rooms">
+        <th scope="row">{{room.id}}</th>
+
+        <td>{{room.name}}</td>
+
+        <td>{{room.temperature.degree}}</td>
+
+    <td>
+        <button class="btn btn-light" v-on:click="delete_room(room.id)">Delete</button>
+    </td>
+    </tr>
+    </tbody>
+</table>
+    <button v-if="!newRoomForm" v-on:click="initNewRoom()">Add a new Room</button>
+    <div v-if="newRoomForm">
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">N°Room</th>
+                <th scope="col">Name </th>
+                <th scope="col">Temperature(in°C)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <form action="">
+            </form>
+            <tr>
+                <th scope="row">{{newRoom.id}}</th>
+
+                <td>{{newRoom.name}}</td>
+                <td>{{newRoom.temperature.degree}}</td>
+                <td>
+                    <button class="btn btn-light" v-on:click="newRoom.temperature.degree++">+</button>
+                    <button class="btn btn-light" v-on:click="newRoom.temperature.degree--">-</button>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+        <br />
+        <button v-on:click="sendNewRoom">Save the new Room</button>
+    </div>
+    <br>
+</div>
+
+
+</body>
+
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="js/Temperature_js.js" type="text/javascript"></script>
+</html>
